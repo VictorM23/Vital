@@ -1,0 +1,58 @@
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\bin\Debug\Vital.exe.config
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.csprojResolveAssemblyReference.cache
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.Login.resources
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.Properties.Resources.resources
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.csproj.GenerateResource.Cache
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\bin\Debug\Vital.exe
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\bin\Debug\Vital.pdb
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.exe
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.pdb
+c:\users\cc-ith\documents\visual studio 2015\Projects\Vital\Vital\obj\Debug\Vital.Pacientes.resources
+E:\Vital\Vital\bin\Debug\Vital.exe.config
+E:\Vital\Vital\obj\Debug\Vital.exe
+E:\Vital\Vital\obj\Debug\Vital.pdb
+E:\Vital\Vital\bin\Debug\Vital.exe
+E:\Vital\Vital\bin\Debug\Vital.pdb
+E:\Vital\Vital\obj\Debug\Vital.csprojResolveAssemblyReference.cache
+E:\Vital\Vital\obj\Debug\Vital.Login.resources
+E:\Vital\Vital\obj\Debug\Vital.Pacientes.resources
+E:\Vital\Vital\obj\Debug\Vital.Properties.Resources.resources
+E:\Vital\Vital\obj\Debug\Vital.csproj.GenerateResource.Cache
+F:\compi\Vital\Vital\bin\Debug\Vital.exe.config
+F:\compi\Vital\Vital\bin\Debug\Vital.exe
+F:\compi\Vital\Vital\bin\Debug\Vital.pdb
+F:\compi\Vital\Vital\obj\Debug\Vital.csprojResolveAssemblyReference.cache
+F:\compi\Vital\Vital\obj\Debug\Vital.BusquedaPacientes.resources
+F:\compi\Vital\Vital\obj\Debug\Vital.Login.resources
+F:\compi\Vital\Vital\obj\Debug\Vital.Menu.resources
+F:\compi\Vital\Vital\obj\Debug\Vital.Pacientes.resources
+F:\compi\Vital\Vital\obj\Debug\Vital.Properties.Resources.resources
+F:\compi\Vital\Vital\obj\Debug\Vital.csproj.GenerateResource.Cache
+F:\compi\Vital\Vital\obj\Debug\Vital.csproj.CoreCompileInputs.cache
+F:\compi\Vital\Vital\obj\Debug\Vital.exe
+F:\compi\Vital\Vital\obj\Debug\Vital.pdb
+C:\Users\CC-ITH\Desktop\Vital\Vital\bin\Debug\Vital.exe.config
+C:\Users\CC-ITH\Desktop\Vital\Vital\bin\Debug\Vital.exe
+C:\Users\CC-ITH\Desktop\Vital\Vital\bin\Debug\Vital.pdb
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.BusquedaPacientes.resources
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.Login.resources
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.Pacientes.resources
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.Properties.Resources.resources
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.csproj.GenerateResource.cache
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.exe
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.pdb
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.csprojResolveAssemblyReference.cache
+C:\Users\CC-ITH\Desktop\Vital\Vital\obj\Debug\Vital.Modificar.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\bin\Debug\Vital.exe.config
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\bin\Debug\Vital.exe
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\bin\Debug\Vital.pdb
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.csprojAssemblyReference.cache
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.BusquedaPacientes.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.Login.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.Modificar.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.Pacientes.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.Properties.Resources.resources
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.csproj.GenerateResource.cache
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.csproj.CoreCompileInputs.cache
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.exe
+C:\Users\LAB_Sistemas_ITH\Desktop\Vital\Vital\obj\Debug\Vital.pdb
