@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.chkMostrar = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -43,7 +44,7 @@
             this.btnLogin.Location = new System.Drawing.Point(170, 218);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(139, 52);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Ingresar";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -57,6 +58,7 @@
             this.txtPass.Size = new System.Drawing.Size(194, 26);
             this.txtPass.TabIndex = 5;
             this.txtPass.Text = "123";
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             // 
             // txtUsuario
             // 
@@ -66,6 +68,7 @@
             this.txtUsuario.Size = new System.Drawing.Size(194, 26);
             this.txtUsuario.TabIndex = 3;
             this.txtUsuario.Text = "maria";
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // label1
             // 
@@ -107,12 +110,25 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Salud y Belleza";
             // 
+            // chkMostrar
+            // 
+            this.chkMostrar.AutoSize = true;
+            this.chkMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMostrar.Location = new System.Drawing.Point(373, 154);
+            this.chkMostrar.Name = "chkMostrar";
+            this.chkMostrar.Size = new System.Drawing.Size(82, 24);
+            this.chkMostrar.TabIndex = 6;
+            this.chkMostrar.Text = "Mostrar";
+            this.chkMostrar.UseVisualStyleBackColor = true;
+            this.chkMostrar.CheckedChanged += new System.EventHandler(this.chkMostrar_CheckedChanged);
+            // 
             // Login
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 309);
+            this.ClientSize = new System.Drawing.Size(480, 309);
+            this.Controls.Add(this.chkMostrar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -140,6 +156,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkMostrar;
     }
 }
 

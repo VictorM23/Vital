@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUsuario.Designer.cs">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusquedaPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BusquedaPacientes.Designer.cs">
       <DependentUpon>BusquedaPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusquedaPacientesEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedaPacientesEmpleados.Designer.cs">
+      <DependentUpon>BusquedaPacientesEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -64,6 +76,18 @@
     <Compile Include="Modificar.Designer.cs">
       <DependentUpon>Modificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificarEliminarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarEliminarUsuario.Designer.cs">
+      <DependentUpon>ModificarEliminarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarSeguimiento.Designer.cs">
+      <DependentUpon>ModificarSeguimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,14 +96,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguimiento.Designer.cs">
+      <DependentUpon>Seguimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaSeguimiento.Designer.cs">
+      <DependentUpon>VistaSeguimiento.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AgregarUsuario.resx">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BusquedaPacientes.resx">
       <DependentUpon>BusquedaPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusquedaPacientesEmpleados.resx">
+      <DependentUpon>BusquedaPacientesEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modificar.resx">
       <DependentUpon>Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarEliminarUsuario.resx">
+      <DependentUpon>ModificarEliminarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarSeguimiento.resx">
+      <DependentUpon>ModificarSeguimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pacientes.resx">
       <DependentUpon>Pacientes.cs</DependentUpon>
@@ -93,6 +141,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Seguimiento.resx">
+      <DependentUpon>Seguimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaSeguimiento.resx">
+      <DependentUpon>VistaSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

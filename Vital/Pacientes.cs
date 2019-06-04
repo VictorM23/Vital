@@ -20,89 +20,157 @@ namespace Vital
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LABSISINF;Initial Catalog=Vital;Integrated Security=True";
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO Pacientes(Nombre, Direccion, Telefono, Correo, Edad, FechaNac, Sexo, TipoActFisica, ActFisica, Escolaridad, Ocupacion, HorarioTrabajo, EstadoCivil, NumeroHijos, PartoNatural, PartoCesarea, PadresConObesidad, HermanosConObesidad, Fuma, ConsumeBebidas, Medicamento, AntFamiliares, AntPersonales) VALUES(@Nombre, @Direccion, @Telefono, @Correo, @Edad, @FechaNac, @Sexo, @TipoActFisica, @ActFisica, @Escolaridad, @Ocupacion, @HorasTrabajo, @EstadoCivil, @NumeroHijos, @PartoNatural, @PartoCesarea, @PadresObesidad, @HmnosObesidad, @Fuma, @Bebidas, @Medicamento, @AntFamiliares, @AntPersonales)";
-
-            string Sexo = "";
-            string PadresObesidad = "";
-            string HmnosObesidad = "";
-            foreach (RadioButton rb in pnlSexo.Controls)
+            if (EmailValido(txtCorreo.Text) == true)
             {
-                if (rb.Checked == true)
+                bool lleno = true;
+                foreach (Control ctrl in this.Controls)
                 {
-                    Sexo = rb.Text;
+                    if (ctrl is TextBox)
+                    {
+                        TextBox textbox = (TextBox)ctrl;
+                        if (textbox.Text.Trim() == string.Empty)
+                        {
+                            lleno = false;
+                            textbox.Focus();
+                        }
+                    }
+                    else
+                    {
+                        if (ctrl is ComboBox)
+                        {
+                            ComboBox cb = (ComboBox)ctrl;
+                            if (cb.SelectedIndex == -1)
+                            {
+                                lleno = false;
+                                cb.Focus();
+                            }
+                        }
+                        else
+                        {
+                            if (ctrl is MaskedTextBox)
+                            {
+                                MaskedTextBox mask = (MaskedTextBox)ctrl;
+                                if (
+                                    mask.MaskCompleted == false)
+                                {
+                                    lleno = false;
+                                    ctrl.Focus();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (lleno == true)
+                {
+                    bool existe = false;
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = @"Data Source=VICTOR-PC;Initial Catalog=Vital;Integrated Security=True";
+                    SqlCommand cmd2 = new SqlCommand("select Nombre from Pacientes", con2);
+                    con2.Open();
+
+                    SqlDataReader read = cmd2.ExecuteReader();
+
+                    while (read.Read())
+                    {
+                        if (txtNombre.Text == read["Nombre"].ToString())
+                        {
+                            existe = true;
+                        }
+                    
+                    }
+                    con2.Close();
+
+                    if (existe == true)
+                    {
+                        MessageBox.Show("El paciente ya existe");
+                    }
+                    else
+                    {
+                        SqlConnection con = new SqlConnection();
+                        con.ConnectionString = @"Data Source=VICTOR-PC;Initial Catalog=Vital;Integrated Security=True";
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        con.Open();
+
+                        cmd.CommandText = "INSERT INTO Pacientes(Nombre, Direccion, Telefono, Correo, Edad, FechaNac, Sexo, TipoActFisica, ActFisica, Escolaridad, Ocupacion, HorarioTrabajo, EstadoCivil, NumeroHijos, PartoNatural, PartoCesarea, PadresConObesidad, HermanosConObesidad, Fuma, ConsumeBebidas, Medicamento, AntFamiliares, AntPersonales) VALUES(@Nombre, @Direccion, @Telefono, @Correo, @Edad, @FechaNac, @Sexo, @TipoActFisica, @ActFisica, @Escolaridad, @Ocupacion, @HorasTrabajo, @EstadoCivil, @NumeroHijos, @PartoNatural, @PartoCesarea, @PadresObesidad, @HmnosObesidad, @Fuma, @Bebidas, @Medicamento, @AntFamiliares, @AntPersonales)";
+
+                        cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                        cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
+                        cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
+                        cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+                        cmd.Parameters.AddWithValue("@Edad", txtEdad.Text);
+                        cmd.Parameters.AddWithValue("@FechaNac", dtpFechaNac.Text);
+                        cmd.Parameters.AddWithValue("@Sexo", cbSexo.Text);
+                        cmd.Parameters.AddWithValue("@TipoActFisica", cbActFisica.Text);
+                        cmd.Parameters.AddWithValue("@ActFisica", txtActFisica.Text);
+                        cmd.Parameters.AddWithValue("@Escolaridad", txtEscolaridad.Text);
+                        cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacion.Text);
+                        cmd.Parameters.AddWithValue("@HorasTrabajo", dtpHora1.Text + " - " + dtpHora2.Text);
+                        cmd.Parameters.AddWithValue("@EstadoCivil", txtEstadoCivil.Text);
+                        cmd.Parameters.AddWithValue("@NumeroHijos", txtNumeroHijos.Text);
+                        cmd.Parameters.AddWithValue("@PartoNatural", txtPartoNatural.Text);
+                        cmd.Parameters.AddWithValue("@PartoCesarea", txtPartoCesarea.Text);
+                        cmd.Parameters.AddWithValue("@PadresObesidad", cbPadres.Text);
+                        cmd.Parameters.AddWithValue("@HmnosObesidad", cbHermanos.Text);
+                        cmd.Parameters.AddWithValue("@Fuma", cbFuma.Text);
+                        cmd.Parameters.AddWithValue("@Bebidas", cbBebidas.Text);
+                        cmd.Parameters.AddWithValue("@Medicamento", txtMedicamento.Text);
+                        cmd.Parameters.AddWithValue("@AntFamiliares", txtAntFamiliares.Text);
+                        cmd.Parameters.AddWithValue("@AntPersonales", txtAntPersonales.Text);
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Paciente Guardado");
+                        txtNombre.Focus();
+                        con.Close();
+
+                        foreach (Control c in this.Controls)
+                        {
+                            if (c is TextBox)
+                            {
+                                TextBox textbox = (TextBox)c;
+                                textbox.Text = string.Empty;
+                            }
+                            if (c is ComboBox)
+                            {
+                                ComboBox cb = (ComboBox)c;
+                                cb.SelectedIndex = -1;
+                            }
+                            if (c is MaskedTextBox)
+                            {
+                                MaskedTextBox mtb = (MaskedTextBox)c;
+                                mtb.Text = string.Empty;
+                            }
+                            if (c is DateTimePicker)
+                            {
+                                DateTimePicker dtp = (DateTimePicker)c;
+                                dtp.Text = DateTime.Today.ToString();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Campos Incompletos");
                 }
             }
-            foreach (RadioButton rb in pnlPadresObesidad.Controls)
+            else
             {
-                if (rb.Checked == true)
-                {
-                    PadresObesidad = rb.Text;
-                }
+                MessageBox.Show("Formato de Correo Electronico Incorrecto");
+                txtCorreo.Focus();
             }
-            foreach (RadioButton rb in pnlHmnosObesidad.Controls)
+        }
+        bool EmailValido(string email)
+        {
+            try
             {
-                if (rb.Checked == true)
-                {
-                    HmnosObesidad = rb.Text;
-                }
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
             }
-
-            cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-            cmd.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
-            cmd.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
-            cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-            cmd.Parameters.AddWithValue("@Edad", txtEdad.Text);
-            cmd.Parameters.AddWithValue("@FechaNac", mtbFechaNac.Text);
-            cmd.Parameters.AddWithValue("@Sexo", Sexo);
-            cmd.Parameters.AddWithValue("@TipoActFisica", cbActFisica.Text);
-            cmd.Parameters.AddWithValue("@ActFisica", txtActFisica.Text);
-            cmd.Parameters.AddWithValue("@Escolaridad", txtEscolaridad.Text);
-            cmd.Parameters.AddWithValue("@Ocupacion", txtOcupacion.Text);
-            cmd.Parameters.AddWithValue("@HorasTrabajo", txtHorasTrabajo.Text);
-            cmd.Parameters.AddWithValue("@EstadoCivil", txtEstadoCivil.Text);
-            cmd.Parameters.AddWithValue("@NumeroHijos", txtNumeroHijos.Text);
-            cmd.Parameters.AddWithValue("@PartoNatural", txtPartoNatural.Text);
-            cmd.Parameters.AddWithValue("@PartoCesarea", txtPartoCesarea.Text);
-            cmd.Parameters.AddWithValue("@PadresObesidad", PadresObesidad);
-            cmd.Parameters.AddWithValue("@HmnosObesidad", HmnosObesidad);
-            cmd.Parameters.AddWithValue("@Fuma", txtFuma.Text);
-            cmd.Parameters.AddWithValue("@Bebidas", txtBebidas.Text);
-            cmd.Parameters.AddWithValue("@Medicamento", txtMedicamento.Text);
-            cmd.Parameters.AddWithValue("@AntFamiliares", txtAntFamiliares.Text);
-            cmd.Parameters.AddWithValue("@AntPersonales", txtAntPersonales.Text);
-            cmd.ExecuteNonQuery();
-
-            MessageBox.Show("Paciente Guardado");
-            foreach (Control c2 in this.Controls)
+            catch
             {
-                if (c2 is TextBox)
-                {
-                    TextBox textbox = (TextBox)c2;
-                    textbox.Text = string.Empty;
-                }
-                if (c2 is RadioButton)
-                {
-                    RadioButton rb = (RadioButton)c2;
-                    rb.Checked = false;
-                }
-                if (c2 is ComboBox)
-                {
-                    ComboBox cb = (ComboBox)c2;
-                    cb.SelectedIndex = -1;
-                }
-                if (c2 is MaskedTextBox)
-                {
-                    MaskedTextBox mtb = (MaskedTextBox)c2;
-                    mtb.Text = string.Empty;
-                }
+                return false;
             }
-            con.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -113,23 +181,18 @@ namespace Vital
 
         private void Pacientes_FormClosing(object sender, FormClosingEventArgs e)
         {
-            BusquedaPacientes Pacientes = new BusquedaPacientes();
-            Pacientes.Show();
+            foreach(Form form in Application.OpenForms)
+            {
+                if (form.Name == "BusquedaPacientes" || form.Name == "BusquedaPacientesEmpleados")
+                {
+                    form.Show();
+                }
+            }
         }
 
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !(e.KeyChar == (char)Keys.Back || char.IsNumber(e.KeyChar));
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
@@ -147,64 +210,30 @@ namespace Vital
             }
         }
 
-        private void mtbFechaNac_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
+        }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+        private void Pacientes_Load(object sender, EventArgs e)
+        {
+            dtpFechaNac.MaxDate = DateTime.Today;
+            dtpFechaNac.Text = DateTime.Today.ToString();
         }
 
         private void txtNumeroHijos_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !(e.KeyChar == (char)Keys.Back || char.IsNumber(e.KeyChar));
         }
 
         private void txtPartoNatural_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !(e.KeyChar == (char)Keys.Back || char.IsNumber(e.KeyChar));
         }
 
         private void txtPartoCesarea_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !(e.KeyChar == (char)Keys.Back || char.IsNumber(e.KeyChar));
         }
     }
 }

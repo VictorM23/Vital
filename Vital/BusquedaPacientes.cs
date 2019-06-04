@@ -20,13 +20,13 @@ namespace Vital
 
         private void BusquedaPacientes_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //foreach (Form form in Application.OpenForms)
-            //{
-            //    if (form.Name == "Login")
-            //    {
-            //        form.Show();
-            //    }
-            //}
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "Login")
+                {
+                    form.Show();
+                }
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -38,13 +38,79 @@ namespace Vital
         {
             Pacientes Agregar = new Pacientes();
             Agregar.Show();
-            this.Close();
+            this.Hide();
         }
 
-        private void BusquedaPacientes_Load(object sender, EventArgs e)
+        private void btnTodo_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LABSISINF;Initial Catalog=Vital;Integrated Security=True";
+            con.ConnectionString = @"Data Source=VICTOR-PC;Initial Catalog=Vital;Integrated Security=True";
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Pacientes", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            dgvPacientes.DataSource = dt;
+            con.Close();
+            dgvPacientes.Sort(dgvPacientes.Columns["Nombre"], ListSortDirection.Descending);
+            txtBuscar.Text = string.Empty;
+            dgvPacientes.ReadOnly = true;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == string.Empty)
+            {
+                MessageBox.Show("Campo Incompleto");
+                txtBuscar.Focus();
+            }
+            else
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = @"Data Source=VICTOR-PC;Initial Catalog=Vital;Integrated Security=True";
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Pacientes where Nombre LIKE '%" + txtBuscar.Text + "%'", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvPacientes.DataSource = dt;
+                con.Close();
+                dgvPacientes.Sort(dgvPacientes.Columns["Nombre"], ListSortDirection.Descending);
+                dgvPacientes.ReadOnly = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Modificar Modificar = new Modificar();
+            Modificar.Show();
+            this.Hide();
+        }
+
+        private void btn_Seguimiento_Click(object sender, EventArgs e)
+        {
+            VistaSeguimiento seguimiento = new VistaSeguimiento();
+            seguimiento.Show();
+            this.Hide();
+        }
+
+        private void btn_fecha_Click(object sender, EventArgs e)
+        {
+            string date = DateTime.Now.ToString("dd/MM/yyyy");
+            MessageBox.Show(date);
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
+        }
+
+        private void BusquedaPacientes_VisibleChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=VICTOR-PC;Initial Catalog=Vital;Integrated Security=True";
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Pacientes", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -54,41 +120,21 @@ namespace Vital
 
             con.Close();
             dgvPacientes.DataSource = dt;
+            dgvPacientes.ReadOnly = true;
         }
 
-        private void btnTodo_Click(object sender, EventArgs e)
+        private void agregarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LABSISINF;Initial Catalog=Vital;Integrated Security=True";
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Pacientes", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            dgvPacientes.DataSource = dt;
-            con.Close();
+            AgregarUsuario Agregar = new AgregarUsuario();
+            Agregar.Show();
+            this.Hide();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void modificarEliminarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "Data Source=LABSISINF;Initial Catalog=Vital;Integrated Security=True";
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Pacientes where Nombre LIKE '%" + txtBuscar.Text + "%'", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            dgvPacientes.DataSource = dt;
-            con.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Modificar Modificar = new Modificar();
-            Modificar.Show();
-            this.Close();
+            ModificarEliminarUsuario modificar = new ModificarEliminarUsuario();
+            modificar.Show();
+            this.Hide();
         }
     }
 }
